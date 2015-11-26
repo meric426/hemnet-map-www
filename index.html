@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <titile>hemnet realtime map</titile>
+    <script src="public/jquery-2.1.4.min.js"></script>
+    <script src="public/socket.io-1.3.7.js"></script>
+    <script>
+      $(function() {
+        var socket = io("127.0.0.1:4000");
+
+        socket.on('date', function(data){
+          console.log('data', data);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    foo
+    <div id="events"></div>
+  </body>
+</html>
