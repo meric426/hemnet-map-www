@@ -11,17 +11,8 @@
   </head>
   <body>
 
-    <div id="map"></div>
+    <div id="map" class="dark"></div>
 
     <script src="public/js/map.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var socket = io('127.0.0.1:4000');
-
-      socket.on('date', function (data){
-        console.log('data', data);
-      });
-    });
-    </script>
   </body>
 </html>
