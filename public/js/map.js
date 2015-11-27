@@ -9,8 +9,23 @@ var customIcon = L.divIcon({
   iconSize: [10, 10]
 });
 
+var setStyles = function (coords) {
+  return L.divIcon({
+    className: 'property__icon ' + 'property__icon--' + getMarkerType(coords),
+    iconSize: [10, 10]
+  })
+};
+
+var getMarkerType = function (coords) {
+  if (coords.type) {
+    return coords.type.split('.').shift();
+  }
+
+  return 'web';
+};
+
 socket.on('coords', function (coord) {
-  var marker = L.marker([coord.lat, coord.lng], { icon: customIcon});
+  var marker = L.marker([coord.lat, coord.lng], { icon: setStyles(coord) });
   marker.addTo(map);
 
   setTimeout(function () {
