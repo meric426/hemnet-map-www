@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin:0; padding:0;
 }
@@ -14,7 +18,11 @@ body {
     background: rgba(57, 170, 53, 0);
   }
 
-  50% {
+  30% {
+    background: rgba(57, 170, 53, 1);
+  }
+
+  70% {
     background: rgba(57, 170, 53, 1);
   }
 
@@ -29,7 +37,11 @@ body {
     transform: scale(1);
   }
 
-  50% {
+  30% {
+    border-color: rgba(57, 170, 53, .8);
+  }
+
+  60% {
     border-color: rgba(57, 170, 53, 1);
   }
 
@@ -45,7 +57,7 @@ body {
   border-radius: 50%;
   transform: translateZ(0);
 
-  animation: pulse 1.8s linear;
+  animation: pulse 1.8s ease-in;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
@@ -57,7 +69,7 @@ body {
   top: -5px; left: -5px; right: -5px; bottom: -5px;
   border-radius: 50%;
 
-  animation: pulse-border 1.8s linear;
+  animation: pulse-border 1.8s ease-in;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
