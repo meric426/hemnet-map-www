@@ -17,11 +17,7 @@ var setStyles = function (coords) {
 };
 
 var getMarkerType = function (coords) {
-  if (coords.type) {
-    return coords.type.split('.').shift();
-  }
-
-  return 'web';
+  return coords.type.split('.').shift();
 };
 
 socket.on('coords', function (coord) {
