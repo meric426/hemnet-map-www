@@ -15,5 +15,5 @@ socket.on('coords', function (coord) {
 
   setTimeout(function () {
     map.removeLayer(marker);
-  }, 1000 * 3);
+  }, 1000 * 5);
 });
