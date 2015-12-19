@@ -32,7 +32,8 @@ body {
 }
 
 .label {
-  margin-right: 12px;
+  margin-right: 32px;
+  margin-top: 2px;
 }
 
 .color {
