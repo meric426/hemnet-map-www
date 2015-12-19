@@ -1,4 +1,4 @@
-var socket = io('192.168.32.112:4000');
+var socket = io('127.0.0.1:4000');
 
 L.mapbox.accessToken = 'pk.eyJ1IjoicGF0cmlrd2licm9uIiwiYSI6ImNpaGhldnJteDAwYTR2dGtxOHZkdWpsY2oifQ.RHt6xn90DI072UEXAEzhWQ';
 var map = L.mapbox.map('map', 'mapbox.dark')
