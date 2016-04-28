@@ -23,6 +23,11 @@ module.exports = {
       },
     }),
   ],
+  resolve: {
+    alias: {
+      webworkify: 'webworkify-webpack',
+    }
+ },
   module: {
     loaders: [
       {
@@ -40,6 +45,17 @@ module.exports = {
         test: /\.scss$/,
         exclude: /node_modules/,
         loader: 'style!css!sass'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
+    ],
+    postLoaders: [
+      {
+        include: /node_modules\/mapbox-gl/,
+        loader: 'transform',
+        query: 'brfs'
       }
     ]
   }
