@@ -3,10 +3,8 @@
   <head>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <title>Hemnet realtime search map</title>
-    <link rel="stylesheet" href="public/css/map.css">
-    <script src="public/js/socket.io-1.3.7.js"></script>
+    <link rel="stylesheet" href="/dist/bundle.css">
     <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
-    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js"></script>
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
   </head>
   <body>
@@ -18,8 +16,8 @@
       <span class="color color--green"></span><span class="label">Mobil</span>
     </div>
 
-    <div id="map" class="dark"></div>
+    <div id="map" class="realtime__map dark"></div>
 
-    <script src="public/js/map.js"></script>
+    <script src="/dist/bundle.js"></script>
   </body>
 </html>

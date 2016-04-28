@@ -1,15 +1,16 @@
 $hemnet-green: #39aa35;
-$hemnet-blue: #1493BC;
+$hemnet-blue: #1493bc;
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin:0; padding:0;
+  margin: 0;
+  padding: 0;
 }
 
-#map {
+.realtime__map {
   position: absolute;
   top: 0;
   bottom: 0;
