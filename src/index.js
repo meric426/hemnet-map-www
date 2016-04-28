@@ -1,7 +1,9 @@
-const config = require('./config');
-const socket = require('socket.io-client')(config.socketHost);
+import { accessToken, socketHost } from './config';
+import io from 'socket.io-client';
 
-L.mapbox.accessToken = config.accessToken;
+const socket = io(socketHost);
+
+L.mapbox.accessToken = accessToken;
 const map = L.mapbox.map('map', 'mapbox.dark')
     .setView([61.653860, 16.503246], 6);
 
