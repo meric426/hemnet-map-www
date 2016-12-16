@@ -1,5 +1,6 @@
 $hemnet-green: #39aa35;
 $hemnet-blue: #1493bc;
+$hemnet-orange: #FF6800;
 
 * {
   box-sizing: border-box;
@@ -53,6 +54,10 @@ body {
 
   &--green {
     background-color: $hemnet-green;
+  }
+
+  &--orange {
+    background-color: $hemnet-orange;
   }
 }
 
@@ -187,4 +192,9 @@ body {
   &:before {
     @include pulse-animate-border-mobile;
   }
+}
+
+.marker-canvas {
+  position: absolute;;
+  z-index: 2;
 }
