@@ -1,4 +1,8 @@
 const PIXI = require('pixi.js');
+import sphericalmercator from '@mapbox/sphericalmercator';
+const Sphericalmercator = new sphericalmercator({
+  size: 256
+});
 
 const colors = {
   green: 0x39aa35,
@@ -11,8 +15,15 @@ const STAGE_HEIGHT = window.innerHeight;
 
 let stage;
 let renderer;
+let swBoundsCoords;
+let zoomLevel;
 
-export function initMarkerRenderer() {
+export function initMarkerRenderer(bounds, zoom) {
+  const sw = bounds._southWest;
+  swBoundsCoords = Sphericalmercator.px([sw.lng, sw.lat], zoom);
+
+  zoomLevel = zoom;
+
   renderer = new PIXI.WebGLRenderer(
     STAGE_WIDTH, STAGE_HEIGHT, { antialias: true, transparent: true, resolution: 1 }
   );
@@ -22,6 +33,12 @@ export function initMarkerRenderer() {
   document.body.appendChild(renderer.view);
 
   renderer.render(stage)
+  animate();
+}
+
+export function updateMap(zoom, swBounds) {
+  zoomLevel = zoom;
+  swBoundsCoords = Sphericalmercator.px([swBounds.lng, swBounds.lat], zoom);
   animate();
 }
 
@@ -43,17 +60,20 @@ export function createMarker(color, lat, lng) {
   const marker = new PIXI.Graphics();
   stage.addChild(marker);
 
-  const x = Math.floor(Math.random() * STAGE_WIDTH) + 1;
-  const y = Math.floor(Math.random() * STAGE_HEIGHT) + 1;
+  const coords = Sphericalmercator.px([lng, lat], zoomLevel);
+
+  const x = (coords[0] - swBoundsCoords[0]);
+  const y = STAGE_HEIGHT - (swBoundsCoords[1] - coords[1]);
 
   marker.beginFill(getColorFromSearchType(color));
   marker.drawCircle(x, y, 5);
   marker.endFill();
 
   stage.addChild(marker);
+
   setTimeout(() => {
     marker.destroy();
-  }, 2000);
+  }, 1000);
 }
 
 function animate() {
