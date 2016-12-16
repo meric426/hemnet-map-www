@@ -59,7 +59,6 @@ function getColorFromSearchType(type) {
 
 export function createMarker(color, lat, lng) {
   const marker = new PIXI.Graphics();
-  stage.addChild(marker);
 
   const coords = Sphericalmercator.px([lng, lat], zoomLevel);
 
@@ -69,16 +68,18 @@ export function createMarker(color, lat, lng) {
   marker.beginFill(getColorFromSearchType(color));
   marker.drawCircle(x, y, 5);
   marker.endFill();
+  marker.alpha = 0;
+
+  stage.addChild(marker);
 
   const markerId = new Date();
   let i = 0;
 
-  stage.addChild(marker);
   markerArray.push({markerId, marker, i});
 
   setTimeout(() => {
     marker.destroy();
-  }, 5000);
+  }, 15000);
 }
 
 function animate() {
@@ -90,8 +91,12 @@ function animate() {
 
     markerArray[i].i++;
 
-    if (counter > 50) {
-      marker.alpha = 1 - (counter * 0.01);
+    if (counter < 10) {
+      marker.alpha = (counter * 0.10);
+    }
+
+    if (counter >= 100) {
+      marker.alpha = 1 - ((counter - 100) * 0.01);
     }
   }
 
