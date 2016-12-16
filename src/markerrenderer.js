@@ -18,6 +18,8 @@ let renderer;
 let swBoundsCoords;
 let zoomLevel;
 
+const markerArray = [];
+
 export function initMarkerRenderer(bounds, zoom) {
   const sw = bounds._southWest;
   swBoundsCoords = Sphericalmercator.px([sw.lng, sw.lat], zoom);
@@ -39,7 +41,6 @@ export function initMarkerRenderer(bounds, zoom) {
 export function updateMap(zoom, swBounds) {
   zoomLevel = zoom;
   swBoundsCoords = Sphericalmercator.px([swBounds.lng, swBounds.lat], zoom);
-  animate();
 }
 
 function getColorFromSearchType(type) {
@@ -69,14 +70,23 @@ export function createMarker(color, lat, lng) {
   marker.drawCircle(x, y, 5);
   marker.endFill();
 
+  const markerId = new Date();
+
   stage.addChild(marker);
+  markerArray.push({markerId, marker});
 
   setTimeout(() => {
     marker.destroy();
-  }, 1000);
+  }, 1600);
 }
 
 function animate() {
   renderer.render(stage);
+
+  for (let i = 0; i < markerArray.length; i++) {
+    let marker = markerArray[i];
+    marker.alpha -= 0.01;
+  }
+
   requestAnimationFrame(animate);
 }
