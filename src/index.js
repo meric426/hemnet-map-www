@@ -1,29 +1,19 @@
 import { accessToken, socketHost } from './config';
 import io from 'socket.io-client';
+import {initMarkerRenderer, createMarker} from './markerrenderer';
 
 const socket = io(socketHost);
 
 L.mapbox.accessToken = accessToken;
-const map = L.mapbox.map('map', 'mapbox.dark')
-    .setView([61.653860, 16.503246], 6);
-
-const createIcon = (coords) => {
-  return L.divIcon({
-    className: `property__icon property__icon--${getMarkerType(coords)}`,
-    iconSize: [10, 10]
-  })
-};
+const map = L.mapbox.map('map', 'mapbox.dark').setView([61.653860, 16.503246], 6);
 
 // Returns web / mobile
-const getMarkerType = (coords) => {
-  return coords.type.split('.').shift();
-};
+const getMarkerType = type => type.split('.').shift();
 
-socket.on('coords', (coord) => {
-  const marker = L.marker([coord.lat, coord.lng], { icon: createIcon(coord) });
-  marker.addTo(map);
+initMarkerRenderer();
 
-  setTimeout(() => {
-    map.removeLayer(marker);
-  }, 1000 * 2);
+socket.on('coords', (marker) => {
+  const type = getMarkerType(marker.type);
+  const {lat, lng} = marker;
+  createMarker(type, lat, lng);
 });
