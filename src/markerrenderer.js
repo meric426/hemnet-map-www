@@ -71,21 +71,28 @@ export function createMarker(color, lat, lng) {
   marker.endFill();
 
   const markerId = new Date();
+  let i = 0;
 
   stage.addChild(marker);
-  markerArray.push({markerId, marker});
+  markerArray.push({markerId, marker, i});
 
   setTimeout(() => {
     marker.destroy();
-  }, 1600);
+  }, 5000);
 }
 
 function animate() {
   renderer.render(stage);
 
   for (let i = 0; i < markerArray.length; i++) {
-    let marker = markerArray[i];
-    marker.alpha -= 0.01;
+    let marker = markerArray[i].marker;
+    let counter = markerArray[i].i;
+
+    markerArray[i].i++;
+
+    if (counter > 50) {
+      marker.alpha = 1 - (counter * 0.01);
+    }
   }
 
   requestAnimationFrame(animate);
