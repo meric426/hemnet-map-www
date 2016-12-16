@@ -195,6 +195,7 @@ body {
 }
 
 .marker-canvas {
-  position: absolute;;
+  position: absolute;
   z-index: 2;
+  pointer-events: none;
 }
