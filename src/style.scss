@@ -30,7 +30,7 @@ body {
   top: 1rem;
   left: 4rem;
   z-index: 3;
-  color: rgba(#fff, .8);
+  color: rgba(#fff, 0.8);
   font-family: sans-serif;
   display: flex;
 }
@@ -91,7 +91,7 @@ body {
     }
 
     30% {
-      border-color: rgba($hemnet-purple, .8);
+      border-color: rgba($hemnet-purple, 0.8);
     }
 
     60% {
@@ -137,7 +137,7 @@ body {
     }
 
     30% {
-      border-color: rgba($hemnet-green, .8);
+      border-color: rgba($hemnet-green, 0.8);
     }
 
     60% {
@@ -183,7 +183,7 @@ body {
     }
 
     30% {
-      border-color: rgba($hemnet-orange, .8);
+      border-color: rgba($hemnet-orange, 0.8);
     }
 
     60% {
@@ -211,10 +211,13 @@ body {
   animation-fill-mode: forwards;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     border: 1px solid;
-    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
     border-radius: 50%;
 
     animation-duration: 2s;

@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --host 0.0.0.0 --hot --inline --content-base .",
-    "build": "NODE_ENV=production webpack --config webpack.prod.config.js --progress -p"
+    "dev": "sass --watch ./src/style.scss ./dist/style.css & node build.js && open index.html",
+    "build": "rm -rf dist && mkdir dist && node build.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/meric426/hemnet-map-www.git"
   },
-  "author": "Martin Ericson, Patrik Wibron",
+  "author": "Martin Ericson, Patrik Wibron Alireza Tavakol Deniz Caner",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/meric426/hemnet-map-www/issues"
@@ -25,6 +25,7 @@
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
     "babelify": "^10.0.0",
-    "browserify": "^17.0.0"
+    "browserify": "^17.0.0",
+    "sass": "^1.69.5"
   }
 }
