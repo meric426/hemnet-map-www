@@ -29,7 +29,28 @@ setInterval(function(){
   const coord = {
     lat: latitude,
     lng: longitude,
-    type: "web.web",
+    type: "purple.purple",
+  }
+
+  const marker = L.marker([coord.lat, coord.lng], { icon: createIcon(coord) });
+  marker.addTo(map);
+
+  setTimeout(() => {
+    map.removeLayer(marker);
+  }, 1000 * 2);
+}, 50);
+
+setInterval(function(){
+  // random latitude between 55 and 68
+  // random longitude between 11 and 23
+
+  const latitude = Math.random() * (68 - 55) + 55;
+  const longitude = Math.random() * (23 - 11) + 11;
+
+  const coord = {
+    lat: latitude,
+    lng: longitude,
+    type: "orange.orange",
   }
 
   const marker = L.marker([coord.lat, coord.lng], { icon: createIcon(coord) });
@@ -51,7 +72,7 @@ setInterval(function(){
   const coord = {
     lat: latitude,
     lng: longitude,
-    type: "mobile.mobile",
+    type: "green.green",
   }
 
   const marker = L.marker([coord.lat, coord.lng], { icon: createIcon(coord) });

@@ -1,5 +1,6 @@
-$hemnet-green: #39aa35;
-$hemnet-blue: #1493bc;
+$hemnet-green: #068d36;
+$hemnet-orange: #ff6b00;
+$hemnet-purple: #c1569d;
 
 * {
   box-sizing: border-box;
@@ -47,63 +48,67 @@ body {
   margin-right: 12px;
   border-radius: 50%;
 
-  &--blue {
-    background-color: $hemnet-blue;
+  &--purple {
+    background-color: $hemnet-purple;
   }
 
   &--green {
     background-color: $hemnet-green;
   }
+
+  &--orange {
+    background-color: $hemnet-orange;
+  }
 }
 
-@mixin pulse-animate-web {
-  @keyframes pulse-web {
+@mixin pulse-animate-purple {
+  @keyframes pulse-purple {
     0% {
-      background: rgba($hemnet-blue, 0);
+      background: rgba($hemnet-purple, 0);
     }
 
     30% {
-      background: rgba($hemnet-blue, 1);
+      background: rgba($hemnet-purple, 1);
     }
 
     70% {
-      background: rgba($hemnet-blue, 1);
+      background: rgba($hemnet-purple, 1);
     }
 
     100% {
-      background: rgba($hemnet-blue, 0);
+      background: rgba($hemnet-purple, 0);
     }
   }
 
-  animation-name: pulse-web;
+  animation-name: pulse-purple;
 }
 
-@mixin pulse-animate-border-web {
-  @keyframes pulse-border-web {
+@mixin pulse-animate-border-purple {
+  @keyframes pulse-border-purple {
     0% {
-      border-color: rgba($hemnet-blue, 0);
+      border-color: rgba($hemnet-purple, 0);
       transform: scale(1);
     }
 
     30% {
-      border-color: rgba($hemnet-blue, .8);
+      border-color: rgba($hemnet-purple, .8);
     }
 
     60% {
-      border-color: rgba($hemnet-blue, 1);
+      border-color: rgba($hemnet-purple, 1);
     }
 
     100% {
-      border-color: rgba($hemnet-blue, 0);
+      border-color: rgba($hemnet-purple, 0);
       transform: scale(1.6);
     }
   }
 
-  animation-name: pulse-border-web;
+  animation-name: pulse-border-purple;
 }
 
-@mixin pulse-animate-mobile {
-  @keyframes pulse-mobile {
+@mixin pulse-animate-green {
+  @keyframes pulse-green {
     0% {
       background: rgba($hemnet-green, 0);
     }
@@ -121,11 +126,11 @@ body {
     }
   }
 
-  animation-name: pulse-mobile;
+  animation-name: pulse-green;
 }
 
-@mixin pulse-animate-border-mobile {
-  @keyframes pulse-border-mobile {
+@mixin pulse-animate-border-green {
+  @keyframes pulse-border-green {
     0% {
       border-color: rgba($hemnet-green, 0);
       transform: scale(1);
@@ -145,7 +150,53 @@ body {
     }
   }
 
-  animation-name: pulse-border-mobile;
+  animation-name: pulse-border-green;
+}
+
+@mixin pulse-animate-orange {
+  @keyframes pulse-orange {
+    0% {
+      background: rgba($hemnet-orange, 0);
+    }
+
+    30% {
+      background: rgba($hemnet-orange, 1);
+    }
+
+    70% {
+      background: rgba($hemnet-orange, 1);
+    }
+
+    100% {
+      background: rgba($hemnet-orange, 0);
+    }
+  }
+
+  animation-name: pulse-orange;
+}
+
+@mixin pulse-animate-border-orange {
+  @keyframes pulse-border-orange {
+    0% {
+      border-color: rgba($hemnet-orange, 0);
+      transform: scale(1);
+    }
+
+    30% {
+      border-color: rgba($hemnet-orange, .8);
+    }
+
+    60% {
+      border-color: rgba($hemnet-orange, 1);
+    }
+
+    100% {
+      border-color: rgba($hemnet-orange, 0);
+      transform: scale(1.6);
+    }
+  }
+
+  animation-name: pulse-border-orange;
 }
 
 .property__icon {
@@ -173,18 +224,26 @@ body {
   }
 }
 
-.property__icon--web {
-  @include pulse-animate-web;
+.property__icon--purple {
+  @include pulse-animate-purple;
 
   &:before {
-    @include pulse-animate-border-web;
+    @include pulse-animate-border-purple;
   }
 }
 
-.property__icon--mobile {
-  @include pulse-animate-mobile;
+.property__icon--orange {
+  @include pulse-animate-orange;
 
   &:before {
-    @include pulse-animate-border-mobile;
+    @include pulse-animate-border-orange;
+  }
+}
+
+.property__icon--green {
+  @include pulse-animate-green;
+
+  &:before {
+    @include pulse-animate-border-green;
   }
 }
