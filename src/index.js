@@ -1,9 +1,9 @@
-import { accessToken, socketHost } from './config';
+import { accessToken, socketHost } from './config.js';
 import io from 'socket.io-client';
 
-const socket = io(socketHost);
+// const socket = io(socketHost);
 
-L.mapbox.accessToken = accessToken;
+L.mapbox.accessToken = 'pk.eyJ1IjoibWVyaWM0MjYiLCJhIjoiY2xvNWlxempoMGE0djJ0bnpjNjBjajVqeSJ9.gbJKajzAG7K1CdOVG1hOXg';
 const map = L.mapbox.map('map', 'mapbox.dark')
     .setView([61.653860, 16.503246], 6);
 
@@ -19,11 +19,49 @@ const getMarkerType = (coords) => {
   return coords.type.split('.').shift();
 };
 
-socket.on('coords', (coord) => {
+setInterval(function(){
+  // random latitude between 55 and 68
+  // random longitude between 11 and 23
+
+  const latitude = Math.random() * (68 - 55) + 55;
+  const longitude = Math.random() * (23 - 11) + 11;
+
+  const coord = {
+    lat: latitude,
+    lng: longitude,
+    type: "web.web",
+  }
+
   const marker = L.marker([coord.lat, coord.lng], { icon: createIcon(coord) });
   marker.addTo(map);
 
   setTimeout(() => {
     map.removeLayer(marker);
   }, 1000 * 2);
-});
+}, 50);
+
+
+setInterval(function(){
+  // random latitude between 55 and 68
+  // random longitude between 11 and 23
+
+  const latitude = Math.random() * (68 - 55) + 55;
+  const longitude = Math.random() * (23 - 11) + 11;
+
+  const coord = {
+    lat: latitude,
+    lng: longitude,
+    type: "mobile.mobile",
+  }
+
+  const marker = L.marker([coord.lat, coord.lng], { icon: createIcon(coord) });
+  marker.addTo(map);
+
+  setTimeout(() => {
+    map.removeLayer(marker);
+  }, 1000 * 2);
+}, 50);
+
+// socket.on('coords', (coord) => {
+
+// });
