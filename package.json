@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "sass --watch ./src/style.scss ./dist/style.css & node build.js && open index.html",
-    "build": "rm -rf dist && mkdir dist && node build.js"
+    "build": "rm -rf dist && mkdir dist && node build.js",
+    "serve": "http-server -p 8080"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/meric426/hemnet-map-www#readme",
   "dependencies": {
+    "http-server": "^14.1.1",
     "mapbox.js": "3.3.1",
     "socket.io-client": "4.7.2"
   },
